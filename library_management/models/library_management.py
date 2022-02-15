@@ -7,7 +7,7 @@ class LibraryManagement(models.Model) :
     _name = "library.books"
     _description = "Library data"
 
-    name = fields.Char()
+    name = fields.Char(required=True)
     description = fields.Text()
     image = fields.Image()
     category_id = fields.Many2one('books.category')
@@ -17,7 +17,7 @@ class LibraryManagement(models.Model) :
     edition = fields.Char()
     title = fields.Char()
     author = fields.Char()
-    price = fields.Float()
+    price = fields.Float(default=10)
     pages = fields.Integer()
 
     status = fields.Selection([

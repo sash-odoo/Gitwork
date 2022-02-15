@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="library_action" model="ir.actions.act_window">
+        <field name="name">Book</field>
+        <field name="res_model">library.books</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="library_bookrequest_action" model="ir.actions.act_window">
+        <field name="name">Book Request</field>
+        <field name="res_model">book.request</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_library_root" name="Library Management">
+        <menuitem id="menu_library_books" name="Book">
+            <menuitem id="menu_library_action" action="library_action"/>
+        </menuitem>
+        <menuitem id="menu_library_bookrequest" name="Book Request">
+            <menuitem id="menu_library_bookrequest_action" action="library_bookrequest_action"/>
+        </menuitem>
+    </menuitem>
+
+    
+
+</odoo>

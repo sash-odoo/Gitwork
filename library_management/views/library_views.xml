@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="library_books_form" model="ir.ui.view">
+        <field name="name">Book</field>
+        <field name="model">library.books</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_issue" type="object" string="Issue" attrs="{'invisible' : [('state','=','issue')]}"/>
+                    <field name="status" widget="statusbar" />
+                </header>
+                <group>
+                    <div class = "o_form_image_controls">
+                        <div class="o_field_image o_field_widget o_avatar oe_left" aria-automic = "true">
+                            <field name="image" widget="image" class="oe_avatar" />
+                        </div>
+                    </div>
+                </group>
+
+                <group>
+                    <field name = "name" />
+                    <field name="state" />
+                </group>
+
+                <group>
+                    <field name = "category_id" widget = "many2one_tags" />
+                </group>
+
+                <notebook>
+                    <page string="Information">
+                        <group>
+                            <group>
+                                <field name = "isbn" />
+                                <field name = "publisher" />
+                                <field name = "Copyright" />
+                                <field name = "edition" />
+                            </group>
+                            <group>
+                                <field name = "title" />
+                                <field name = "author" />
+                                <field name = "price" />
+                                <field name = "pages" />
+                            </group>
+                        </group>
+                    </page>
+
+                    <page string = "Description">
+                        <group>
+                            <field name = "description" />
+                        </group>
+                    </page>
+
+                </notebook>
+
+            </form>
+        </field>
+    </record>
+
+
+    <record id="library_book_request_form" model="ir.ui.view">
+        <field name="name">Book</field>
+        <field name="model">library.books</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_issue" type="object" string="Issue" attrs="{'invisible' : [('state','=','issue')]}"/>
+                    <field name="status" widget="statusbar" />
+                </header>
+                <group>
+                    <div class = "o_form_image_controls">
+                        <div class="o_field_image o_field_widget o_avatar oe_left" aria-automic = "true">
+                            <field name="image" widget="image" class="oe_avatar" />
+                        </div>
+                    </div>
+                </group>
+
+                <group>
+                    <field name = "name" />
+                    <field name="state" />
+                </group>
+
+                <group>
+                    <field name = "category_id" widget = "many2one_tags" />
+                </group>
+
+                <notebook>
+                    <page string="Information">
+                        <group>
+                            <group>
+                                <field name = "isbn" />
+                                <field name = "publisher" />
+                                <field name = "Copyright" />
+                                <field name = "edition" />
+                            </group>
+                            <group>
+                                <field name = "title" />
+                                <field name = "author" />
+                                <field name = "price" />
+                                <field name = "pages" />
+                            </group>
+                        </group>
+                    </page>
+
+                    <page string = "Description">
+                        <group>
+                            <field name = "description" />
+                        </group>
+                    </page>
+
+                </notebook>
+
+            </form>
+        </field>
+    </record>
+
+
+    <record id="library_books_tree" model="ir.ui.view">
+        <field name="name">Book</field>
+        <field name="model">library.books</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name = "name" />
+                <field name = "title" />
+                <field name = "author" />
+                <field name = "category_id" />
+                <field name = "price" optional="hide" />
+                <field name = "pages" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="library_book_search" model="ir.ui.view">
+        <field name="name">Library Book Search</field>
+        <field name="model">library.books</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name = "name" />
+                <field name = "description" string = "Name and Description" 
+                    filter_domain = "['|' , ('name' , 'ilike' , self) , ('description' , 'ilike' , self)]" />
+
+                <group expand="1" string="group By">
+                    <filter string="Book Author" name="author" context="{'group_by' : 'author'}" />
+                    <filter string="Book Price" name="price" context="{'group_by' : 'price'}" />
+                    <filter string="Book Category" name="category_id" context="{'group_by' : 'category_id'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+</odoo>
